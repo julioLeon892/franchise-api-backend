@@ -10,13 +10,13 @@ RESTful API built with Spring Boot to manage franchises, their branches, and bra
 
 ## Configuration
 
-Set the MongoDB connection string using the `SPRING_DATA_MONGODB_URI` environment variable. Example for MongoDB Atlas:
+The application is preconfigured to connect to the provided MongoDB Atlas cluster:
 
-```bash
-export SPRING_DATA_MONGODB_URI="mongodb+srv://jcleon892_db_user:DrMRLdoYAgEpW3XU@<cluster-url>/franchise-api?retryWrites=true&w=majority"
+```
+mongodb+srv://jcleon892_db_user:DrMRLdoYAgEpW3XU@cluster0.lsvnmvi.mongodb.net/franchise-api?retryWrites=true&w=majority
 ```
 
-If the variable is not provided the application will try to connect to `mongodb://localhost:27017/franchise-api`.
+If you need to point the API to a different database, set the `SPRING_DATA_MONGODB_URI` environment variable with your own connection string before starting the application.
 
 ## Running locally
 
@@ -44,7 +44,7 @@ docker build -t franchise-api .
 Run the container (replace the URI with your own):
 
 ```bash
-docker run -e SPRING_DATA_MONGODB_URI="mongodb://localhost:27017/franchise-api" -p 8080:8080 franchise-api
+docker run -e SPRING_DATA_MONGODB_URI="mongodb+srv://<user>:<password>@<cluster-host>/<database>?retryWrites=true&w=majority" -p 8080:8080 franchise-api
 ```
 
 ## API Endpoints
